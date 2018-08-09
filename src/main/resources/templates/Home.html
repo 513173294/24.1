@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Biblioteka</title>
+</head>
+<body>
+
+
+<div style="width:800px; margin:0 auto;">
+    <form action="/addbook" method="post" th:object="${newBook}">
+        Tytuł <input class="form-control form-control-lg" type="text" th:field="*{tytul}"><br>
+        Kategoria : <input class="form-control form-control-lg" type="text" th:field="*{kategoria}"><br>
+        ISBN : <input class="form-control form-control-lg" type="text" th:field="*{isbn}"><br>
+        Data Wydania :<input class="form-control form-control-lg" type="text" th:field="*{dataWydania}"><br>
+        <input class="btn btn-primary" type="submit" value="dodaj">
+
+
+    </form>
+
+</div>
+<div>
+    <table>
+        <thead>
+        <th>Tytul</th>
+        <th>Kategoria</th>
+        <th>data wydania</th>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${allbooks}">
+            <td th:text="*{book.tytul}"></td>
+            <td th:text="${book.dataWydania}"></td>
+            <td th:text="${book.kategoria}"></td>
+            <td th:text="${book.isbn}"></td>
+
+        </tr>
+
+
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
